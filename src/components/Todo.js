@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Input, message, Checkbox } from "antd";
 import React from "react";
+import { config } from "../config";
 import axios from "axios";
 
 const Todo = (props) => {
@@ -24,7 +25,7 @@ const Todo = (props) => {
   const regTodo = async () => {
     try {
       const param = { todo: inputTodo };
-      const responseData = await axios.post(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos`, param, {
+      const responseData = await axios.post(`${config.API}/todos`, param, {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -44,7 +45,7 @@ const Todo = (props) => {
   const modifyTodo = async (isCompleted) => {
     try {
       const param = { todo: inputTodo, isCompleted };
-      const responseData = await axios.put(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${todoId}`, param, {
+      const responseData = await axios.put(`${config.API}/todos/${todoId}`, param, {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -63,7 +64,7 @@ const Todo = (props) => {
 
   const handleDelete = async () => {
     try {
-      const responseData = await axios.delete(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${todoId}`, {
+      const responseData = await axios.delete(`${config.API}/todos/${todoId}`, {
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

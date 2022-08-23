@@ -1,6 +1,7 @@
 import { Button, Form as AntForm, Input, message } from "antd";
 import { useState } from "react";
 import axios from "axios";
+import { config } from "../config";
 import { useNavigate } from "react-router-dom";
 
 const Form = () => {
@@ -11,7 +12,7 @@ const Form = () => {
         email: inputEmail,
         password: inputPw,
       };
-      const responseData = await axios.post(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signup`, param);
+      const responseData = await axios.post(`${config.API}/auth/signup`, param);
 
       const { data } = responseData;
       if (data.access_token !== null) {
@@ -27,7 +28,7 @@ const Form = () => {
       password: inputPw,
     };
     try {
-      const responseData = await axios.post(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin`, param);
+      const responseData = await axios.post(`${config.API}/auth/signin`, param);
       const { data } = responseData;
       localStorage.setItem("accessToken", data.access_token);
       navigate("/todo");
