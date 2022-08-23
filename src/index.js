@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./pages/Home";
-import Todo from "./pages/Todo";
+import Home from "./pages/HomePage";
+import TodoPage from "./pages/TodoPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "antd/dist/antd.min.css";
 
@@ -11,7 +11,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/todo" element={<Todo />} />
+        <Route path="/todo" element={<TodoPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
