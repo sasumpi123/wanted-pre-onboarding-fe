@@ -120,6 +120,7 @@ const Todo = (props) => {
             <Button
               type={isModifyMode ? "dashed" : "primary"}
               onClick={() => {
+                setInputTodo(serverTodo.todo);
                 setEnableModify(false);
               }}
             >
